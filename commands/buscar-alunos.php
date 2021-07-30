@@ -9,9 +9,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $entityManagerFactory = new EntityManagerFactory();
 $entityManager = $entityManagerFactory->getEntityManager();
 
- $alunoRepository = $entityManager->getRepository(Aluno::class);
-
- $alunoList = $alunoRepository->findAll();
+$dql = "SELECT aluno FROM Alura\\Doctrine\\Entity\Aluno aluno WHERE aluno.id = 1 OR  aluno.name = 'Heloise'";
+$query = $entityManager->createQuery($dql);
+$alunoList = $query->getResult();
 
  /**@var Aluno[] $alunoList */
  foreach ($alunoList as $aluno) {
@@ -21,15 +21,3 @@ $entityManager = $entityManagerFactory->getEntityManager();
     echo "ID: {$aluno->getId()} \nNome: {$aluno->getName()}\n";
     echo "Telefones: " . implode(', ', $telefones) . PHP_EOL . PHP_EOL;
  }
-
- $helo = $alunoRepository->find(2);
- echo $helo->getName() . PHP_EOL;
-
-//  $ari = $alunoRepository->find($argv[1]);
-//  echo $ari->getName() . PHP_EOL;
-
-//  $cleideFerreira = $alunoRepository->findOneBy([
-//     'name' => 'Cleide Ferreira',
-//  ]);
-
-//  var_dump($cleideFerreira);

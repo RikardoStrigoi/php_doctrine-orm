@@ -23,7 +23,7 @@ class Aluno
     private $name;
 
     /**
-     * @OneToMany(targetEntity="Telefone", mappedBy="aluno", cascade={"remove", "persist"})
+     * @OneToMany(targetEntity="Telefone", mappedBy="aluno", cascade={"remove", "persist"}, fetch="EAGER")
      */
     private $telefones;
 
@@ -81,6 +81,9 @@ class Aluno
         return $this;
     }
 
+    /**
+     * @return Curso[]
+     */
     public function getCursos(): Collection
     {
         return $this->cursos;
