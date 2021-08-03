@@ -9,7 +9,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $entityManagerFactory = new EntityManagerFactory();
 $entityManager = $entityManagerFactory->getEntityManager();
 
-$dql = "SELECT aluno FROM Alura\\Doctrine\\Entity\Aluno aluno WHERE aluno.id = 1 OR  aluno.name = 'Heloise'";
+$dql = "SELECT aluno FROM Alura\\Doctrine\\Entity\Aluno aluno";
 $query = $entityManager->createQuery($dql);
 $alunoList = $query->getResult();
 
